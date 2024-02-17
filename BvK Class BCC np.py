@@ -538,7 +538,7 @@ class Force_Constants:
 #Example
 ntsteps = 4                                 #ts =1000000, tdump = 500, ntsteps = 1000000/500 = 2000
 in_path = 'C:\\Users\\biknb\\Downloads\\Cesar\\Phonons_0.5\\ord\\LAMMPS/FeV_'+root+'/'
-box_length = 'latt_par' * 10                #box length =6   #'latt_par' * 10  later remove '' with numbers
+box_length = latt_par * 10                #box length =6   #'latt_par' * 10  later remove '' with numbers
 dump_file_root = 'dump.FeV_tmpK.'
 #pos_file = 'FeV_B2_2.78.pos'
 fc_filename = 'fc_FeV_latt_par_tmpK.csv'

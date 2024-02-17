@@ -13,9 +13,9 @@ import linecache
 # alat = '2.84'    
 # #T = 300, 500, 700, 1000, 1300
 # temp = '300K'   
-sys = 'Disordered'
-alat = [2.85, 2.86, 2.87, 2.88, 2.89, 2.90, 2.91, 2.92, 2.93, 2.94, 2.95, 2.96, 2.97, 2.98, 2.99, 3.00] #you can input here a list or s aingle volume
-temp = [300, 500, 700 ,1000, 1300] 
+sys = 'dis'
+alat = [2.939]#, 2.919, 2.920, 2.924, 2.939] #you can input here a list or s aingle volume
+temp = [1300]#, 500, 700 ,1000, 1300] 
 
 
 for x in alat:
@@ -24,8 +24,11 @@ for x in alat:
         df = pd.read_csv('C:\\Users\\biknb\\Downloads\\Cesar\\Phonons_0.5\\'+sys+'\\SPOSCAR', sep=' ', skiprows=8, skipinitialspace=True, header=None, names = ["xx", "yy", "zz"])
         # print(df)
 
-        df = df.multiply(28.5)
+        # grab lattice constant from "atomic_position.data"
+        # mult = linecache.getline('C:\\Users\\biknb\\Downloads\\Cesar\\Phonons_0.5\\'+sys+'\\FeV_'+str(x)+'_'+str(y)+'\\atoms_positions.data', 7).split()[1]
+        mult = next((line.split()[1] for i, line in enumerate(open('C:\\Users\\biknb\\Downloads\\Cesar\\Phonons_0.5\\'+sys+'\\LAMMPS\\FeV_'+str(x)+'_'+str(y)+'K\\atoms_positions.data')) if i == 6), None)
 
+        df = df.multiply(float(mult))
         #add 2nd col with new col name : "type" 
         type_list = []
         type_list.extend([1 for i in range(1000)])
@@ -74,13 +77,13 @@ for x in alat:
 
         merge('atoms_header.data', 'sorted_atoms_positions.data', 'dis_atoms_positions.data')
 
-        #remove unnnecessary files
-        out_path = 'C:\\Users\\biknb\\Downloads\\Cesar\\Phonons_0.5\\'+sys+'\\LAMMPS\\FeV_'+str(x)+'_'+str(y)+'K\\'
-        os.chdir(out_path)
-        command = "rm  atoms_header.data"
-        os.system(command)
-        command = "rm  sorted_atoms_positions.data"
-        os.system(command)
+        # #remove unnnecessary files
+        # out_path = 'C:\\Users\\biknb\\Downloads\\Cesar\\Phonons_0.5\\'+sys+'\\LAMMPS\\FeV_'+str(x)+'_'+str(y)+'K\\'
+        # os.chdir(out_path)
+        # command = "rm  atoms_header.data"
+        # os.system(command)
+        # command = "rm  sorted_atoms_positions.data"
+        # os.system(command)
 
 
         # sys.exit()

@@ -15,7 +15,8 @@ parent_dir = "C:\\Users\\biknb\\Downloads\\Cesar\\Phonons_0.5\\ord\\"
 eam = parent_dir + 'FeV.meam'
 libmeam = parent_dir + 'FeV.library.meam'
 lammps_in_file = parent_dir + 'FeV.in'
-position_footer = parent_dir + 'atomic_position_footers_dis.txt'
+position_footer = parent_dir + 'atoms_positions.txt'
+position_header = parent_dir + 'atoms_header.txt'
 
 #Create the LAMMPS directory with the V and T folders & input files
 lammps_dir = os.mkdir(parent_dir + 'LAMMPS')
@@ -32,7 +33,8 @@ for x in vols:
         dir_name = lammps_path + 'FeV' + '_' + str(x) + '_' + str(y) + 'K'
         dirs = os.mkdir(dir_name)
         shutil.copy(eam, dir_name)
-        # shutil.copy(position_footer, dir_name)
+        shutil.copy(position_footer, dir_name)  
+        shutil.copy(position_header, dir_name)  #change lattice parameter
         shutil.copy(libmeam, dir_name)
         
         rename = data.replace("latt_par", str(x)).replace("tmp", str(y)).replace("system", "FeV") 

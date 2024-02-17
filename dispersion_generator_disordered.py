@@ -9,7 +9,7 @@ import pandas as pd
 
 # Remember to modify POSCAR file to correct lattice parameter
 root = 'latt_param_tmpK'
-alat = 'latt_param' * 10 # Lattice parameter times number of unit cells (so the size of the box)
+alat = latt_param * 10 # Lattice parameter times number of unit cells (so the size of the box)
 ndisps = 1     #500    # Number of dispersions to generate (equal to number of yalm files)
 n = 2000 # Number of atoms
 init_no = 2    #1500 for 2000 steps to generate ndisps = 500

@@ -14,12 +14,12 @@ from scipy.integrate import quad
 import scipy.integrate as integrate
 
 # s = 's=0.1'        # p/dos_sigma value = 0.1, 0.9
-sys = 'ord'        # ord, dis
-t = 300
+sys = 'Disordered'        # ord, dis
+t = 700
 kb = 8.617333262e-5 # eV/K
 
 vols = [2.85, 2.86, 2.87, 2.88, 2.89, 2.90, 2.91, 2.92, 2.93, 2.94, 2.95, 2.96, 2.97, 2.98, 2.99, 3.00] #you can input here a list or s aingle volume
-temp = [300]  
+temp = [700]  
 
 for x in vols:
     for y in temp:

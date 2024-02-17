@@ -14,15 +14,15 @@ import linecache
 # alat = '2.84'    
 # #T = 300, 500, 700, 1000, 1300
 # temp = '300K'   
-sys = 'Disordered'
-alat = [2.85, 2.86, 2.87, 2.88, 2.89, 2.90, 2.91, 2.92, 2.93, 2.94, 2.95, 2.96, 2.97, 2.98, 2.99, 3.00] #you can input here a list or s aingle volume
-temp = [300, 500, 700 ,1000, 1300] 
+sys = 'ord'
+alat = [2.889]#, 2.890, 2.889, 2.892, 2.895] #you can input here a list or s aingle volume
+temp = [700]#, 500, 700 ,1000, 1300] 
 
 
 for x in alat:
     for y in temp:
         #read from SPOSCAR and multiply all cols by latt_param
-        df = pd.read_csv('C:\\Users\\biknb\\Downloads\\Cesar\\Phonons_0.5\\Disordered\\POSCAR', sep=' ', skiprows=8, skipinitialspace=True, header=None, names = ["xx", "yy", "zz"])
+        df = pd.read_csv('C:\\Users\\biknb\\Downloads\\Cesar\\Phonons_0.5\\files\\SPOSCAR', sep=' ', skiprows=8, skipinitialspace=True, header=None, names = ["xx", "yy", "zz"])
         # df = pd.read_csv('C:\\Users\\biknb\\Downloads\\Cesar\\FeV\\FeV_'     '_'+temp+'\\SPOSCAR', sep=' ', skiprows=8, skipinitialspace=True, header=None, names = ["x", "y", "z"])
         
         # grab lattice constant from "atomic_position.data"
@@ -77,13 +77,13 @@ for x in alat:
         
         merge('atoms_header.data', 'sorted_atoms_positions', 'atoms_positions.data')
         
-        #remove unnnecessary files
-        out_path = 'C:\\Users\\biknb\\Downloads\\Cesar\\Phonons_0.5\\'+sys+'\\LAMMPS\\FeV_'+str(x)+'_'+str(y)+'K\\'
-        os.chdir(out_path)
-        command = "rm  atoms_header.data"
-        os.system(command)
-        command = "rm  sorted_atoms_positions.data"
-        os.system(command)
+        # #remove unnnecessary files
+        # out_path = 'C:\\Users\\biknb\\Downloads\\Cesar\\Phonons_0.5\\'+sys+'\\LAMMPS\\FeV_'+str(x)+'_'+str(y)+'K\\'
+        # os.chdir(out_path)
+        # command = "rm  atoms_header.data"
+        # os.system(command)
+        # command = "rm  sorted_atoms_positions.data"
+        # os.system(command)
         
         
         # sys.exit()
